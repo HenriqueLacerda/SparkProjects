@@ -1,14 +1,213 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>SparkProjects</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+		<title>SparkProjects</title>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+		<style type="text/css">
+			body {
+				padding-top: 60px;
+				padding-bottom: 40px;
+			}
+			.sidebar-nav {
+				padding: 9px 0;
+			}
 
-<%= yield %>
+			@media (max-width: 980px) {
+				/* Enable use of floated navbar text */
+				.navbar-text.pull-right {
+					float: none;
+					padding-left: 5px;
+					padding-right: 5px;
+				}
+			}
+		</style>
+	</head>
+	<body>
 
-</body>
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="brand" href="#">Project name</a>
+					<div class="nav-collapse collapse">
+						<p class="navbar-text pull-right">
+							<% if user_signed_in? %>
+							Logado como: <%= current_user.email %>.
+							<%= link_to "Sair", destroy_user_session_path, :method => :delete %>
+							<% else %>
+							<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+							<% end %>
+						</p>
+						<ul class="nav">
+							<li class="active">
+								<%= link_to "Home", root_path %>
+							</li>
+							<li>
+								<%= link_to "Sobre", root_path %>
+							</li>
+							<li>
+								<%= link_to "Contato", root_path %>
+							</li>
+						</ul>
+					</div><!--/.nav-collapse -->
+				</div>
+			</div>
+		</div>
+
+		<% if user_signed_in? %>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span3">
+					<div class="well sidebar-nav">
+						<ul class="nav nav-list">
+							<li class="nav-header">
+								Cadastros
+							</li>
+							<li>
+								<%= link_to "Clientes", customers_path %>
+							</li>
+							<li>
+								<%= link_to "Fornecedores", providers_path %>
+							</li>
+							<li>
+								<%= link_to "Produtos", products_path %>
+							</li>
+							<li>
+								<%= link_to "Cidades", cities_path %>
+							</li>
+							<li>
+								<%= link_to "Categorias de produtos", category_products_path %>
+							</li>
+							<li>
+								<%= link_to "Marcas de produtos", marks_path %>
+							</li>
+							<li class="nav-header">
+								Vendas
+							</li>
+							<li>
+								<a href="#">Link</a>
+							</li>
+							<li>
+								<a href="#">Link</a>
+							</li>
+							<li>
+								<a href="#">Link</a>
+							</li>
+							<li>
+								<a href="#">Link</a>
+							</li>
+							<li>
+								<a href="#">Link</a>
+							</li>
+							<li>
+								<a href="#">Link</a>
+							</li>
+							<li class="nav-header">
+								Serviços
+							</li>
+							<li>
+								<a href="#">Link</a>
+							</li>
+							<li>
+								<a href="#">Link</a>
+							</li>
+							<li>
+								<a href="#">Link</a>
+							</li>
+						</ul>
+					</div><!--/.well -->
+				</div><!--/span-->
+				<div class="span9">
+					<!--<div class="hero-unit">-->
+					<div>
+						<div class="row-fluid">
+							<div class="span12">
+								<%= yield %>
+							</div><!--/span-->
+						</div><!--/row-->
+					</div>
+				</div><!--/span-->
+			</div><!--/row-->
+
+			<hr>
+
+			<footer>
+				<p>
+					&copy; Company 2013
+				</p>
+			</footer>
+
+		</div><!--/.fluid-container-->
+
+		<% else %>
+		<div class="fold2">
+			<header id="original">
+				<h1>Controle as vendas e os serviços que seu empresa realiza,
+				<br />
+				de maneira simples e descomplicada</h1>
+			</header>
+
+			<section class="drawing">
+				<aside>
+					<p class="victoria">
+						Ter controle sobre o seu trabalho é importante
+					</p>
+				</aside>
+				<figure class="joy"></figure>
+				<section class="signup">
+					<div id='realSignups'>
+						<h2>Start your free trial.</h2>
+					</div>
+
+					<h3>You&rsquo;ll be up and running in less than a minute.</h3>
+					<p>
+						Already have another Basecamp, Breeze, Highrise, Backpack, or Campfire account? <a href="#" data-behavior="show_sign_in">Log in here</a> and a new Basecamp trial will be added to your account.
+					</p>
+				</section>
+
+				<section class="browserupgrade">
+					<h2>Before trying Basecamp free for <span class='trialLengthPlural'>60 days</span>, you&rsquo;ll need to upgrade your browser.</h2>
+					<h3>We built Basecamp using the latest techniques and technologies. This makes Basecamp faster and easier to use. Unfortunately, your browser is an enemy of fun. We recommend <a href="https://www.google.com/chrome">Google Chrome</a>.</h3>
+					<p>
+						<a href="https://www.google.com/chrome" class="chrome">Get Google Chrome now</a>
+					</p>
+					<p>
+						Basecamp also works perfectly in the latest versions of <a href="http://windows.microsoft.com/en-US/internet-explorer/downloads/ie">Internet Explorer</a>, <a href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a>, and <a href="http://www.apple.com/safari/download/">Safari</a>.
+					</p>
+
+				</section>
+
+				<script type="text/javascript" language="JavaScript">
+					if (navigator.userAgent.match("MSIE 8") || navigator.userAgent.match("MSIE 7")) {
+						$("section.browserupgrade").show();
+						$("section.signup").hide();
+					}
+				</script>
+
+				<footer class="caption">
+					<p>
+						Joy is a <a href="http://pitchfork.com" target="_new">designer at Pitchfork</a>.
+					</p>
+				</footer>
+			</section>
+
+			<section class="recommendation">
+				<h1>97% of customers recommend Basecamp.</h1>
+				<h3><a href="/one-page-project">Find out why &rarr;</a></h3>
+			</section>
+			</section>
+
+		</div>
+
+		<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+		<%= yield %>
+		<% end %>
+
+	</body>
 </html>
