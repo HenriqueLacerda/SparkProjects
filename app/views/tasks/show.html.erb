@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Project:</b>
+  <%= @task.project %>
+</p>
+
+<p>
+  <b>Tasktype:</b>
+  <%= @task.taskType %>
+</p>
+
+<p>
+  <b>Titulo:</b>
+  <%= @task.titulo %>
+</p>
+
+<p>
+  <b>Descricao:</b>
+  <%= @task.descricao %>
+</p>
+
+<p>
+  <b>Datainicial:</b>
+  <%= @task.dataInicial %>
+</p>
+
+<p>
+  <b>Datafinal:</b>
+  <%= @task.dataFinal %>
+</p>
+
+<p>
+  <b>Semdata:</b>
+  <%= @task.semData %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Back', tasks_path %>
