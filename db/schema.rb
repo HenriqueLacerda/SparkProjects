@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130905192000) do
+ActiveRecord::Schema.define(:version => 20130905202308) do
 
   create_table "projects", :force => true do |t|
     t.string   "nome"
@@ -21,6 +21,53 @@ ActiveRecord::Schema.define(:version => 20130905192000) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "task_stats", :force => true do |t|
+    t.string   "nome"
+    t.boolean  "finalizada"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "task_types", :force => true do |t|
+    t.string   "nome"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tasks", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "taskType_id"
+    t.string   "titulo"
+    t.string   "descricao"
+    t.date     "dataInicial"
+    t.date     "dataFinal"
+    t.boolean  "semData"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "tasks", ["project_id"], :name => "index_tasks_on_project_id"
+  add_index "tasks", ["taskType_id"], :name => "index_tasks_on_taskType_id"
+
+  create_table "team_members", :force => true do |t|
+    t.integer  "team_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "team_members", ["team_id"], :name => "index_team_members_on_team_id"
+  add_index "team_members", ["user_id"], :name => "index_team_members_on_user_id"
+
+  create_table "teams", :force => true do |t|
+    t.string   "nome"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "teams", ["user_id"], :name => "index_teams_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
