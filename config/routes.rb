@@ -15,7 +15,10 @@ SparkProjects::Application.routes.draw do
 
 
   resources :projects
+  resources :about
+  resources :contact
   resources :dashboard
+  
   devise_for :users
 
   root :to => 'dashboard#index'
