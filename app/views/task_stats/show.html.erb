@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nome:</b>
+  <%= @task_stat.nome %>
+</p>
+
+<p>
+  <b>Finalizada:</b>
+  <%= @task_stat.finalizada %>
+</p>
+
+
+<%= link_to 'Edit', edit_task_stat_path(@task_stat) %> |
+<%= link_to 'Back', task_stats_path %>

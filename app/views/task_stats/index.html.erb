@@ -1,0 +1,25 @@
+<h1>Listing task_stats</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Finalizada</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @task_stats.each do |task_stat| %>
+  <tr>
+    <td><%= task_stat.nome %></td>
+    <td><%= task_stat.finalizada %></td>
+    <td><%= link_to 'Show', task_stat %></td>
+    <td><%= link_to 'Edit', edit_task_stat_path(task_stat) %></td>
+    <td><%= link_to 'Destroy', task_stat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Task stat', new_task_stat_path %>

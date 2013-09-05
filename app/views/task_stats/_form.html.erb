@@ -1,0 +1,25 @@
+<%= form_for(@task_stat) do |f| %>
+  <% if @task_stat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@task_stat.errors.count, "error") %> prohibited this task_stat from being saved:</h2>
+
+      <ul>
+      <% @task_stat.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+  <div class="field">
+    <%= f.label :finalizada %><br />
+    <%= f.check_box :finalizada %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
