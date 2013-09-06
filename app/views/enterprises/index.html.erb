@@ -1,0 +1,37 @@
+<h1>Listing enterprises</h1>
+
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Endereco</th>
+    <th>Numero</th>
+    <th>Bairro</th>
+    <th>Cidade</th>
+    <th>Estado</th>
+    <th>Cep</th>
+    <th>Logo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @enterprises.each do |enterprise| %>
+  <tr>
+    <td><%= enterprise.nome %></td>
+    <td><%= enterprise.endereco %></td>
+    <td><%= enterprise.numero %></td>
+    <td><%= enterprise.bairro %></td>
+    <td><%= enterprise.cidade %></td>
+    <td><%= enterprise.estado %></td>
+    <td><%= enterprise.cep %></td>
+    <td><%= enterprise.logo %></td>
+    <td><%= link_to 'Show', enterprise %></td>
+    <td><%= link_to 'Edit', edit_enterprise_path(enterprise) %></td>
+    <td><%= link_to 'Destroy', enterprise, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Enterprise', new_enterprise_path %>

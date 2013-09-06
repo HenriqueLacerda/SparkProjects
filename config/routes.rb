@@ -1,4 +1,7 @@
 SparkProjects::Application.routes.draw do
+  resources :enterprises
+
+
   resources :team_members
 
 

@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20130905202308) do
 
   create_table "task_stats", :force => true do |t|
     t.string   "nome"
+    t.integer  "ordem"
     t.boolean  "finalizada"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
