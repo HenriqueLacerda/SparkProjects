@@ -1,33 +1,57 @@
-<%= form_for(@project) do |f| %>
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+<%= simple_form_for(@project) do |f| %>
+<% if @project.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-      <ul>
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :nome %><br />
-    <%= f.text_field :nome %>
-  </div>
-  <div class="field">
-    <%= f.label :descricao %><br />
-    <%= f.text_field :descricao %>
-  </div>
-  <div class="field">
-    <%= f.label :dataInicio %><br />
-    <%= f.date_select :dataInicio %>
-  </div>
-  <div class="field">
-    <%= f.label :dataFinal %><br />
-    <%= f.date_select :dataFinal %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<ul>
+		<% @project.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
 <% end %>
+
+<div class="field">
+	<%= f.label :nome %>
+	<br />
+	<%= f.text_field :nome %>
+</div>
+<div class="field">
+	<%= f.label :descricao %>
+	<br />
+	<%= f.text_field :descricao %>
+</div>
+<div class="field">
+	<%= f.label :dataInicio %>
+	<br />
+	<%= f.text_field :dataInicio, :class => "data" %>
+</div>
+<div class="field">
+	<%= f.label :dataFinal %>
+	<br />
+	<%= f.text_field :dataFinal, :class => "data" %>
+</div>
+<div class="actions">
+	<%= f.submit %>
+</div>
+<% end %>
+
+<script language="JavaScript">
+	$(function() {
+		$(".data").datepicker({
+			dateFormat : 'dd/mm/yy',
+			weekHeader: 'Semana',
+			dayNames : ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+			dayNamesMin : ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+			dayNamesShort : ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+			monthNames : ['Janeiro', 'Fevereiro', 'MarÃ§o', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+			monthNamesShort : ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+			nextText : 'Próximo',
+			prevText : 'Anterior'
+		});
+		$("#project_dataFinal").datepicker();
+		
+	}); 
+</script>

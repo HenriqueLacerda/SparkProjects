@@ -15,7 +15,8 @@
   <tr>
     <td><%= project.nome %></td>
     <td><%= project.descricao %></td>
-    <td><%= project.dataInicio %></td>
+    <td><%= l project.dataInicio  %></td>
+    
     <td><%= project.dataFinal %></td>
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>

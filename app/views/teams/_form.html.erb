@@ -1,4 +1,4 @@
-<%= form_for(@team) do |f| %>
+<%= simple_form_for(@team) do |f| %>
   <% if @team.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
@@ -11,14 +11,13 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nome %><br />
-    <%= f.text_field :nome %>
-  </div>
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </div>
+  
+    
+    <%= f.input :nome, label: "Nome" %>
+  
+    
+    <%= f.association :user, collection: User.all.collect{ |u| [u.email, u.id]}, label: "Nome" %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
