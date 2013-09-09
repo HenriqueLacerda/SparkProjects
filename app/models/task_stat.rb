@@ -1,3 +1,3 @@
 class TaskStat < ActiveRecord::Base
-  attr_accessible :finalizada, :nome
+  attr_accessible :finalizada, :nome, :ordem
 end

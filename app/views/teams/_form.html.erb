@@ -1,8 +1,8 @@
 <%= simple_form_for(@team) do |f| %>
+
 <% if @team.errors.any? %>
 <div id="error_explanation">
 	<h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
-
 	<ul>
 		<% @team.errors.full_messages.each do |msg| %>
 		<li>
@@ -17,7 +17,6 @@
 
 <%= f.association :user, collection: User.all.collect{ |u| [u.email, u.id]}, label: "Nome" %>
 
-<div class="actions">
-	<%= f.submit %>
-</div>
+<%= f.button :submit, :class => 'btn btn-success'%>
+
 <% end %>

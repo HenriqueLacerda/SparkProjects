@@ -1,26 +1,15 @@
 SparkProjects::Application.routes.draw do
+  resources :enterprises
   resources :team_members
-
-
   resources :teams
-
-
   resources :task_types
-
-
   resources :task_stats
-
-
   resources :tasks
-
-
   resources :projects
   resources :about
   resources :contact
   resources :dashboard
-  
   devise_for :users
-
   root :to => 'dashboard#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
