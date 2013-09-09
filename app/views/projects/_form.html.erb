@@ -13,45 +13,16 @@
 </div>
 <% end %>
 
-<div class="field">
-	<%= f.label :nome %>
-	<br />
-	<%= f.text_field :nome %>
-</div>
-<div class="field">
-	<%= f.label :descricao %>
-	<br />
-	<%= f.text_field :descricao %>
-</div>
-<div class="field">
-	<%= f.label :dataInicio %>
-	<br />
-	<%= f.text_field :dataInicio, :class => "data" %>
-</div>
-<div class="field">
-	<%= f.label :dataFinal %>
-	<br />
-	<%= f.text_field :dataFinal, :class => "data" %>
-</div>
+<%= f.input :nome, :class => "texto", :label => "Nome"%>
+
+<%= f.input :descricao, :class => "texto", :label => "Descrição"%>
+
+<%= f.text_field :dataInicio, :class => "data", :label => "Data inicial"%>
+
+<%= f.text_field :dataFinal, :class => "data", :label => "Data final"%>
+
 <div class="actions">
 	<%= f.submit %>
 </div>
 <% end %>
 
-<script language="JavaScript">
-	$(function() {
-		$(".data").datepicker({
-			dateFormat : 'dd/mm/yy',
-			weekHeader: 'Semana',
-			dayNames : ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-			dayNamesMin : ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
-			dayNamesShort : ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
-			monthNames : ['Janeiro', 'Fevereiro', 'MarÃ§o', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-			monthNamesShort : ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-			nextText : 'Próximo',
-			prevText : 'Anterior'
-		});
-		$("#project_dataFinal").datepicker();
-		
-	}); 
-</script>

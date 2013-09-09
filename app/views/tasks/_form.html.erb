@@ -1,45 +1,33 @@
-<%= form_for(@task) do |f| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+<%= simple_form_for(@task) do |f| %>
+<% if @task.errors.any? %>
+<div id="error_explanation">
+	<h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
-      <ul>
-      <% @task.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<ul>
+		<% @task.errors.full_messages.each do |msg| %>
+		<li>
+			<%= msg %>
+		</li>
+		<% end %>
+	</ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :project %><br />
-    <%= f.text_field :project %>
-  </div>
-  <div class="field">
-    <%= f.label :taskType %><br />
-    <%= f.text_field :taskType %>
-  </div>
-  <div class="field">
-    <%= f.label :titulo %><br />
-    <%= f.text_field :titulo %>
-  </div>
-  <div class="field">
-    <%= f.label :descricao %><br />
-    <%= f.text_field :descricao %>
-  </div>
-  <div class="field">
-    <%= f.label :dataInicial %><br />
-    <%= f.date_select :dataInicial %>
-  </div>
-  <div class="field">
-    <%= f.label :dataFinal %><br />
-    <%= f.date_select :dataFinal %>
-  </div>
-  <div class="field">
-    <%= f.label :semData %><br />
-    <%= f.check_box :semData %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= f.association :project, collection: Project.all.collect{ |p| [p.nome, p.id]}, :label => "Projeto"%>
+
+<%= f.association :taskType, collection: TaskType.all.collect{ |tt| [tt.nome, tt.id]}, :label => "Tipo de tarefas"%>
+
+<%= f.input :titulo, :class => "texto", :label => "Titulo"%>
+
+<%= f.input :descricao, :class => "texto", :label => "Descrição"%>
+
+<%= f.input :dataInicial, :class => "data", :label => "Data inicial"%>
+
+<%= f.input :dataFinal, :class => "data", :label => "Data final"%>
+
+<%= f.check_box :semData, label: "Sem data" %>
+
+<div class="actions">
+	<%= f.submit %>
+</div>
 <% end %>
