@@ -6,7 +6,7 @@ class CreateEnterprises < ActiveRecord::Migration
       t.string :numero
       t.string :bairro
       t.string :cidade
-      t.strig :estado
+      t.string :estado
       t.string :cep
       t.binary :logo
 

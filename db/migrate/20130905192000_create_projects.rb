@@ -5,6 +5,9 @@ class CreateProjects < ActiveRecord::Migration
       t.string :descricao
       t.date :dataInicio
       t.date :dataFinal
+      t.references :user
+      t.string :projetoPrincipal
+      t.references :project
 
       t.timestamps
     end
