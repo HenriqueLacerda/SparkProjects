@@ -17,15 +17,28 @@
 
 <%= f.association :taskType, collection: TaskType.all.collect{ |tt| [tt.nome, tt.id]}, :label => "Tipo de tarefas"%>
 
+<%= f.association :priority, collection: Priority.all.collect{ |tt| [tt.nome, tt.id]}, :label => "Prioridade"%>
+
 <%= f.input :titulo, :class => "texto", :label => "Titulo"%>
 
 <%= f.input :descricao, :class => "texto", :label => "Descrição"%>
+
+<%= f.association :priority, collection: Customer.all.collect{ |c| [c.nome, c.id]}, :label => "Cliente"%>
+
+<%= f.input :ambiente, :class => "texto", :label => "Ambiente"%>
 
 <%= f.input :dataInicial, :class => "data", :label => "Data inicial"%>
 
 <%= f.input :dataFinal, :class => "data", :label => "Data final"%>
 
 <%= f.input :semData, label: "Sem data" %>
+
+<%= f.association :priority, collection: Priority.all.collect{ |tt| [tt.nome, tt.id]}, :label => "Quem abriu a tarefa"%>
+
+<%= f.association :priority, collection: Priority.all.collect{ |tt| [tt.nome, tt.id]}, :label => "Para que é a tarefa"%>
+
+"Anexos"
+<br><br>
 
 <%= f.button :submit, :class => 'btn btn-success'%>
 

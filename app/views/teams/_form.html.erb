@@ -17,6 +17,14 @@
 
 <%= f.association :user, collection: User.all.collect{ |u| [u.email, u.id]}, label: "Nome" %>
 
+
+<%= 
+f.association :users, :collection => User.all.collect{ |u| [u.email, u.id]},
+    :as => :check_boxes,
+    :selected => params[:preset_id]
+%>
+
+
 <%= f.button :submit, :class => 'btn btn-success'%>
 
 <% end %>

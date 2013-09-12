@@ -16,12 +16,18 @@
 
 <%= f.input :nome, :class => "texto", :label => "Nome"%>
 
+<%= f.association :projectType, collection: ProjectType.all.collect{ |p| [p.nome, p.id]}, :label => "Tipo do Projeto"%>
+
 <%= f.input :descricao, :class => "texto", :label => "Descrição"%>
 
 <%= f.text_field :dataInicio, :class => "data", :label => "Data inicial"%>
 
 <%= f.text_field :dataFinal, :class => "data", :label => "Data final"%>
 
+
+
+  
+  
 <div class="actions">
 	<%= f.submit %>
 </div>

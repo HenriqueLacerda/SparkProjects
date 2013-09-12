@@ -6,8 +6,8 @@ class CreateProjects < ActiveRecord::Migration
       t.date :dataInicio
       t.date :dataFinal
       t.references :user
-      t.string :projetoPrincipal
-      t.references :project
+      t.references :projectType
+      t.references :customer
 
       t.timestamps
     end

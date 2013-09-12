@@ -25,6 +25,7 @@ class TeamsController < ApplicationController
   # GET /teams/new.json
   def new
     @team = Team.new
+    @team_member = TeamMember.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,20 +36,21 @@ class TeamsController < ApplicationController
   # GET /teams/1/edit
   def edit
     @team = Team.find(params[:id])
+    
   end
 
   # POST /teams
   # POST /teams.json
   def create
     @team = Team.new(params[:team])
-
+    
     respond_to do |format|
       if @team.save
-        format.html { redirect_to @team, notice: 'Team was successfully created.' }
-        format.json { render json: @team, status: :created, location: @team }
+        format.html { redirect_to teams_url }
+        format.json { render json: teams_url }
       else
         format.html { render action: "new" }
-        format.json { render json: @team.errors, status: :unprocessable_entity }
+        format.json { render json: @teams.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -60,7 +62,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.update_attributes(params[:team])
-        format.html { redirect_to @team, notice: 'Team was successfully updated.' }
+        format.html { redirect_to teams_url }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -1,4 +1,13 @@
 SparkProjects::Application.routes.draw do
+  resources :customers
+
+
+  resources :project_types
+
+
+  resources :priorities
+
+
   resources :enterprises
   resources :team_members
   resources :teams

@@ -61,7 +61,7 @@
 			</div>
 		</div>
 
-		<% if user_signed_in? %>
+		
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div class="span3">
@@ -83,7 +83,9 @@
 							<li>
 								<%= link_to "Estado de Tarefas", task_stats_path  %>
 							</li>
-							
+							<li>
+								<%= link_to "Prioridades", priorities_path  %>
+							</li>
 							
 							<li class="nav-header">
 								Atividades
@@ -106,18 +108,7 @@
 							<li>
 								<a href="#">Link</a>
 							</li>
-							<li class="nav-header">
-								Serviços
-							</li>
-							<li>
-								<a href="#">Link</a>
-							</li>
-							<li>
-								<a href="#">Link</a>
-							</li>
-							<li>
-								<a href="#">Link</a>
-							</li>
+							
 						</ul>
 					</div><!--/.well -->
 				</div><!--/span-->
@@ -142,70 +133,6 @@
 			</footer>
 
 		</div><!--/.fluid-container-->
-
-		<% else %>
-		<div class="fold2">
-			<header id="original">
-				<h1>Controle as vendas e os serviços que seu empresa realiza,
-				<br />
-				de maneira simples e descomplicada</h1>
-			</header>
-
-			<section class="drawing">
-				<aside>
-					<p class="victoria">
-						Ter controle sobre o seu trabalho é importante
-					</p>
-				</aside>
-				<figure class="joy"></figure>
-				<section class="signup">
-					<div id='realSignups'>
-						<h2>Start your free trial.</h2>
-					</div>
-
-					<h3>You&rsquo;ll be up and running in less than a minute.</h3>
-					<p>
-						Already have another Basecamp, Breeze, Highrise, Backpack, or Campfire account? <a href="#" data-behavior="show_sign_in">Log in here</a> and a new Basecamp trial will be added to your account.
-					</p>
-				</section>
-
-				<section class="browserupgrade">
-					<h2>Before trying Basecamp free for <span class='trialLengthPlural'>60 days</span>, you&rsquo;ll need to upgrade your browser.</h2>
-					<h3>We built Basecamp using the latest techniques and technologies. This makes Basecamp faster and easier to use. Unfortunately, your browser is an enemy of fun. We recommend <a href="https://www.google.com/chrome">Google Chrome</a>.</h3>
-					<p>
-						<a href="https://www.google.com/chrome" class="chrome">Get Google Chrome now</a>
-					</p>
-					<p>
-						Basecamp also works perfectly in the latest versions of <a href="http://windows.microsoft.com/en-US/internet-explorer/downloads/ie">Internet Explorer</a>, <a href="http://www.mozilla.org/en-US/firefox/new/">Firefox</a>, and <a href="http://www.apple.com/safari/download/">Safari</a>.
-					</p>
-
-				</section>
-
-				<script type="text/javascript" language="JavaScript">
-					if (navigator.userAgent.match("MSIE 8") || navigator.userAgent.match("MSIE 7")) {
-						$("section.browserupgrade").show();
-						$("section.signup").hide();
-					}
-				</script>
-
-				<footer class="caption">
-					<p>
-						Joy is a <a href="http://pitchfork.com" target="_new">designer at Pitchfork</a>.
-					</p>
-				</footer>
-			</section>
-
-			<section class="recommendation">
-				<h1>97% of customers recommend Basecamp.</h1>
-				<h3><a href="/one-page-project">Find out why &rarr;</a></h3>
-			</section>
-			</section>
-
-		</div>
-
-		<%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-		<%= yield %>
-		<% end %>
-
+		
 	</body>
 </html>

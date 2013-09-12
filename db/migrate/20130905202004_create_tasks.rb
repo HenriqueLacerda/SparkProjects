@@ -4,8 +4,10 @@ class CreateTasks < ActiveRecord::Migration
       t.references :project
       t.references :user
       t.references :taskType
+      t.references :priority
       t.string :titulo
       t.string :descricao
+      t.string :ambiente
       t.date :dataInicial
       t.date :dataFinal
       t.boolean :semData

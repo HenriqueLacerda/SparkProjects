@@ -44,8 +44,8 @@ class TaskTypesController < ApplicationController
 
     respond_to do |format|
       if @task_type.save
-        format.html { redirect_to @task_type, notice: 'Task type was successfully created.' }
-        format.json { render json: @task_type, status: :created, location: @task_type }
+        format.html { redirect_to task_types_url }
+        format.json { render json: task_types_url }
       else
         format.html { render action: "new" }
         format.json { render json: @task_type.errors, status: :unprocessable_entity }
@@ -60,7 +60,7 @@ class TaskTypesController < ApplicationController
 
     respond_to do |format|
       if @task_type.update_attributes(params[:task_type])
-        format.html { redirect_to @task_type, notice: 'Task type was successfully updated.' }
+        format.html { redirect_to task_types_url }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

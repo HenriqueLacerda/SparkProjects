@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130906042627) do
+ActiveRecord::Schema.define(:version => 20130912180059) do
+
+  create_table "customers", :force => true do |t|
+    t.string   "nome"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "enterprises", :force => true do |t|
     t.string   "nome"
@@ -26,16 +32,36 @@ ActiveRecord::Schema.define(:version => 20130906042627) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "priorities", :force => true do |t|
+    t.string   "nome"
+    t.integer  "ordem"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "project_types", :force => true do |t|
+    t.string   "nome"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "projects", :force => true do |t|
     t.string   "nome"
     t.string   "descricao"
     t.date     "dataInicio"
     t.date     "dataFinal"
     t.integer  "user_id"
-    t.string   "projetoPrincipal"
+    t.integer  "projectType_id"
+    t.integer  "customer_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "projects_projects", :force => true do |t|
     t.integer  "project_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.integer  "subproject_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "task_stats", :force => true do |t|
@@ -56,8 +82,10 @@ ActiveRecord::Schema.define(:version => 20130906042627) do
     t.integer  "project_id"
     t.integer  "user_id"
     t.integer  "taskType_id"
+    t.integer  "priority_id"
     t.string   "titulo"
     t.string   "descricao"
+    t.string   "ambiente"
     t.date     "dataInicial"
     t.date     "dataFinal"
     t.boolean  "semData"
